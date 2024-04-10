@@ -1,9 +1,11 @@
 ﻿using System.Reflection;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace EasyTraningsAPI.DbContext;
 
-public class AppDbContext: Microsoft.EntityFrameworkCore.DbContext
+public class AppDbContext: IdentityDbContext<IdentityUser>
 { 
     public DbSet<User.Entities.User> Users { get; set; }
     public DbSet<SeasonTicket.Entities.SeasonTicket>SeasonTickets { get; set; }
@@ -15,6 +17,6 @@ public class AppDbContext: Microsoft.EntityFrameworkCore.DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+        base.OnModelCreating(modelBuilder);
     }
 }
