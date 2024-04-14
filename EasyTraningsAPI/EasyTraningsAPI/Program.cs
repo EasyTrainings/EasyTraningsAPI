@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using AutoMapper;
+using EasyTraningsAPI.Extensions;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using EasyTraningsAPI.Models.Configuration;
@@ -15,6 +16,12 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
+using EasyTraningsAPI.Models.DTOs;
+using EasyTraningsAPI.Repositories;
+using EasyTraningsAPI.Repositories.Generic;
+using EasyTraningsAPI.Repositories.Interfaces;
+using EasyTraningsAPI.Services.Interfaces;
+using EasyTraningsAPI.Services.Interfaces.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -108,6 +115,17 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddRoles<IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
+
+builder.Services.AddCustomCorsPolicy();
+builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<ITranningRepository, TranningRepository>();
+builder.Services.AddScoped<ISeasonTicketRepository, ISeasonTicketRepository>();
+
+builder.Services.AddScoped<IUserService, IUserService>();
+builder.Services.AddScoped<ITranningService, ITranningService>();
+builder.Services.AddScoped<ISeasonTicketService, ISeasonTicketService>();
+
 
 var app = builder.Build();
 
