@@ -120,11 +120,11 @@ builder.Services.AddCustomCorsPolicy();
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<ITranningRepository, TranningRepository>();
-builder.Services.AddScoped<ISeasonTicketRepository, ISeasonTicketRepository>();
+builder.Services.AddScoped<ISeasonTicketRepository, SeasonTicketRepository>();
 
-builder.Services.AddScoped<IUserService, IUserService>();
-builder.Services.AddScoped<ITranningService, ITranningService>();
-builder.Services.AddScoped<ISeasonTicketService, ISeasonTicketService>();
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<ITranningService, TranningService>();
+builder.Services.AddScoped<ISeasonTicketService, SeasonTicketService>();
 
 
 var app = builder.Build();

@@ -2,10 +2,11 @@
 using EasyTraningsAPI.Models.DTOs;
 using EasyTraningsAPI.Repositories;
 using EasyTraningsAPI.Repositories.Interfaces;
+using EasyTraningsAPI.Services.Interfaces.Interfaces;
 
 namespace EasyTraningsAPI.Services.Interfaces;
 
-public class SeasonTicketService(IMapper mapper, ISeasonTicketRepository seasonTicketRepository): SeasonTicket.Entities.SeasonTicket
+public class SeasonTicketService(IMapper mapper, ISeasonTicketRepository seasonTicketRepository): ISeasonTicketService
 {
     private readonly IMapper _mapper = mapper;
     private readonly ISeasonTicketRepository _seasonTicketRepository = seasonTicketRepository;

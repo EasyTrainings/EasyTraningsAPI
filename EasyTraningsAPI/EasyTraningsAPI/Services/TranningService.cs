@@ -2,11 +2,12 @@
 using EasyTraningsAPI.Models.DTOs;
 using EasyTraningsAPI.Repositories;
 using EasyTraningsAPI.Repositories.Interfaces;
+using EasyTraningsAPI.Services.Interfaces.Interfaces;
 
 
 namespace EasyTraningsAPI.Services.Interfaces;
 
-public class TranningService(IMapper mapper, ITranningRepository tranningRepository): Tranning.Entities.Tranning
+public class TranningService(IMapper mapper, ITranningRepository tranningRepository): ITranningService
 {
     private readonly IMapper _mapper = mapper;
     private readonly ITranningRepository _tranningRepository = tranningRepository;

@@ -2,10 +2,11 @@
 using EasyTraningsAPI.Models.DTOs;
 using EasyTraningsAPI.Repositories;
 using EasyTraningsAPI.Repositories.Interfaces;
+using EasyTraningsAPI.Services.Interfaces.Interfaces;
 
 namespace EasyTraningsAPI.Services.Interfaces;
 
-public class UserService(IMapper mapper, IUserRepository userRepository): User.Entities.User
+public class UserService(IMapper mapper, IUserRepository userRepository): IUserService
 {
     private readonly IMapper _mapper = mapper;
     private readonly IUserRepository _userRepository = userRepository;
