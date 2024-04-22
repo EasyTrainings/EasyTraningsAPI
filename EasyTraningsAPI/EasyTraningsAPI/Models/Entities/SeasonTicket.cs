@@ -20,4 +20,6 @@ public class SeasonTicket
     
     public int TrainingSessions { get; set; } 
     public int RemainingSessions { get; set; }
+    
+    public List<User.Entities.User> Users { get; set; }
 }

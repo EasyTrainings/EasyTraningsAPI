@@ -22,7 +22,10 @@ public class UserService(IMapper mapper, IUserRepository userRepository): IUserS
 
     public async Task<UserDto> AddAsync(UserDto user)
     {
-        return _mapper.Map<UserDto>(await _userRepository.AddAsync(_mapper.Map<User.Entities.User>(user)));
+        User.Entities.User newUser = await _userRepository.AddAsync(_mapper.Map<User.Entities.User>(user));
+        newUser.CreatedAt = DateTime.Now;
+        newUser.UpdatedAt = DateTime.Now;
+        return _mapper.Map<UserDto>(newUser);
     }
 
     public async Task UpdateAsync(int id, UserDto user)

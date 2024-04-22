@@ -7,7 +7,6 @@ public record UserDto()
     public string? Password { get; init; }
     public string? Email { get; init; }
     public string? Username { get; init; }
-    public string? RegistrationDate { get; init; }
     public string? Role { get; init; }
     // public RoleEnum Role { get; init; }
     public string? FirstName { get; init; }
