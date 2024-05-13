@@ -5,8 +5,8 @@ namespace EasyTraningsAPI.Repositories.Generic;
 
 public class Repository<T>: IRepository<T> where T: class
 {
-   private readonly AppDbContext _context;
-   private  readonly DbSet<T> _dbSet;
+    private readonly AppDbContext _context;
+    private  readonly DbSet<T> _dbSet;
     
     protected Repository(AppDbContext context)
     {

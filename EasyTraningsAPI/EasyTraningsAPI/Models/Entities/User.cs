@@ -24,4 +24,3 @@ public class User
     public SeasonTicket.Entities.SeasonTicket? SeasonTicket { get; set; } //foreign key
     public UserAccountStatus AccountStatus { get; set; }
 }
-   

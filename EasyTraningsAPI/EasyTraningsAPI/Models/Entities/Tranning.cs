@@ -8,6 +8,7 @@ public class Tranning
 {
     [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int Id { get; set; }
+
     public string Name { get; set; }
     
     //TO-DO FIX THIS! int -> existing entity
